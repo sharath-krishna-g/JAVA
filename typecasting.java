@@ -1,6 +1,4 @@
-package typecast;
-
-public class t1 {
+public class tc {
 
 	public static void main(String[] args) {
 		//Widening Casting
