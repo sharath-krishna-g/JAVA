@@ -1,7 +1,8 @@
+// To understand TypeCasting
 public class tc {
 
 	public static void main(String[] args) {
-		//Widening Casting
+		// Widening Casting
 		byte b1=45;
 		int i=b1;
 		long l=i;
@@ -9,7 +10,7 @@ public class tc {
 		double d1=f;
 		System.out.println(b1+" "+i+" "+l+" "+f+" "+d1);
 		
-		//Narrowing Casting
+		// Narrowing Casting
 		double a=3994.938;
 		float b=(float)a;
 		long c=(long)b;
