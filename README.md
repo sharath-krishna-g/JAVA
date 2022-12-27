@@ -661,15 +661,15 @@ class Solution{
 		{
 			String name=in.nextLine();
 			String phone=in.nextLine();
-            m.put(name, phone);
+            		m.put(name, phone);
 		}
 		while(in.hasNext())
 		{
 			String s=in.nextLine();
-            if(m.containsKey(s))
-                System.out.println(s+"="+m.get(s));
-            else 
-                System.out.println("Not found");
+            		if(m.containsKey(s))
+                		System.out.println(s+"="+m.get(s));
+            		else 
+                		System.out.println("Not found");
 		}
 	}
 }
