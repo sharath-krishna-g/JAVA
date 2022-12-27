@@ -675,3 +675,102 @@ class Solution{
 }
 ```
 
+## Stack
+```
+import java.util.*;
+
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            
+            Stack<Character> s=new Stack<>();
+            for(int i=0;i<input.length();i++){
+                if(!s.empty()){
+			if(s.peek()=='{' && input.charAt(i)=='}')
+			    s.pop();
+			else if(s.peek()=='[' && input.charAt(i)==']')
+			    s.pop();
+			else if(s.peek()=='(' && input.charAt(i)==')')
+			    s.pop();
+			else
+			    s.push(input.charAt(i));
+			}
+		else{
+		    s.push(input.charAt(i));
+                }
+            }
+            
+            if(s.empty())
+                System.out.println("true");
+            else
+                System.out.println("false");
+		}
+	}
+}
+```
+
+## Hashset
+```
+import java.util.*;
+
+public class Solution {
+
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];
+        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+        
+        Set<String> set=new HashSet<>();
+        for(int i=0;i<t;i++){
+            set.add(pair_left[i]+" "+pair_right[i]);
+            System.out.println(set.size());
+        }
+    }
+}
+```
+
+## Generics
+```
+import java.lang.reflect.Method;
+
+class Printer
+{
+    public <E> void printArray(E[] a){
+        for(E i:a)
+            System.out.println(i);
+    }
+}
+
+public class Solution {
+
+    public static void main( String args[] ) {
+        Printer myPrinter = new Printer();
+        Integer[] intArray = { 1, 2, 3 };
+        String[] stringArray = {"Hello", "World"};
+        myPrinter.printArray(intArray);
+        myPrinter.printArray(stringArray);
+        int count = 0;
+
+        for (Method method : Printer.class.getDeclaredMethods()) {
+            String name = method.getName();
+
+            if(name.equals("printArray"))
+                count++;
+        }
+
+        if(count > 1)System.out.println("Method overloading is not allowed!");
+      
+    }
+}
+```
