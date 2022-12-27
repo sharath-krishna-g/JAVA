@@ -377,4 +377,169 @@ public class Solution{
 }
 ```
 
-## 
+## BigDecimal
+```
+import java.math.BigDecimal;
+import java.util.*;
+class Solution{
+
+    public static void main(String []args){
+        //Input
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        String []s=new String[n+2];
+        for(int i=0;i<n;i++){
+            s[i]=sc.next();
+        }
+      	sc.close();
+        
+        for(int i=0;i<n-1;i++){
+            for(int j=1;j<n;j++){
+                if(Double.parseDouble(s[j-1])<Double.parseDouble(s[j])){
+                    String t=s[j-1];
+                    s[j-1]=s[j];
+                    s[j]=t;
+                }
+            }
+        }
+        //Output
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(s[i]);
+        }
+    }
+}
+```
+
+## Primality Test
+```
+import java.io.*;
+import java.math.*;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String n = bufferedReader.readLine();
+        
+        BigInteger r=new BigInteger(n);
+        if(r.isProbablePrime(1))
+            System.out.print("prime");
+        else
+            System.out.print("not prime");
+	    
+        bufferedReader.close();
+    }
+}
+```
+
+## BigInteger
+```
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        BigInteger a=new BigInteger(sc.next());
+        BigInteger b=new BigInteger(sc.next());
+    
+        System.out.println(a.add(b));
+        System.out.println(a.multiply(b));
+    }
+}
+```
+
+## 1D Array
+```
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+	   
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++)
+            a[i]=scan.nextInt();
+        scan.close();
+
+        // Prints each sequential element in array a
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+}
+```
+
+## 2D Array
+```
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        List<List<Integer>> arr = new ArrayList<>();
+
+        for (int i = 0; i < 6; i++) {
+            String[] arrRowTempItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+            List<Integer> arrRowItems = new ArrayList<>();
+
+            for (int j = 0; j < 6; j++) {
+                int arrItem = Integer.parseInt(arrRowTempItems[j]);
+                arrRowItems.add(arrItem);
+            }
+
+            arr.add(arrRowItems);
+        }
+        
+        int s=Integer.MIN_VALUE;
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                int t=arr.get(i).get(j)+arr.get(i).get(j+1)+arr.get(i).get(j+2)+arr.get(i+1).get(j+1)+arr.get(i+2).get(j)+arr.get(i+2).get(j+1)+arr.get(i+2).get(j+2);
+                if(s<t)
+                    s=t;
+            }
+        }
+        
+        System.out.println(s);
+        bufferedReader.close();
+    }
+}
+```
+
+## Subarray
+```
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++)
+            a[i]=sc.nextInt();
+        
+        int c=0;
+        for(int i=0;i<n;i++){
+            int t=0;
+            for(int j=i;j<n;j++){
+                t+=a[j];
+                if(t<0)
+                    c++;
+            }
+        }
+        
+        System.out.println(c);
+    }
+}
+```
