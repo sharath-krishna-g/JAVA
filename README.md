@@ -543,3 +543,135 @@ public class Solution {
     }
 }
 ```
+
+## ArrayList
+```
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        ArrayList<ArrayList<Integer>> a=new ArrayList<>();
+        int n=sc.nextInt();
+        while(n-->0){
+            int d=sc.nextInt();
+            ArrayList<Integer> t=new ArrayList<>();
+            for(int i=0;i<d;i++)
+                t.add(sc.nextInt());
+            a.add(t);
+        }
+        
+        int q=sc.nextInt();
+        while(q-->0){
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            
+            try{
+                int r=a.get(x-1).get(y-1);
+                System.out.println(r);
+            }catch(Exception e){
+                System.out.println("ERROR!");
+            }
+        }
+    }
+}
+```
+
+## 1D Array(Part 2)
+```
+import java.util.*;
+
+public class Solution {
+
+    public static boolean canWin(int leap, int[] game,int i) {
+        if(i>game.length-1)
+            return true;
+        else if(i<0 || game[i]==1)
+            return false;
+        game[i]=1;
+        
+        return canWin(leap, game, i+1) || canWin(leap, game, i-1) || canWin(leap, game, i+leap);
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        while (q-- > 0) {
+            int n = scan.nextInt();
+            int leap = scan.nextInt();
+            
+            int[] game = new int[n];
+            for (int i = 0; i < n; i++) {
+                game[i] = scan.nextInt();
+            }
+
+            System.out.println( (canWin(leap, game,0)) ? "YES" : "NO" );
+        }
+        scan.close();
+    }
+}
+```
+
+## List
+```
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        int n=sc.nextInt();
+        
+        List<Integer> l=new ArrayList<>();
+        for(int i=0;i<n;i++)
+            l.add(i,sc.nextInt());
+            
+        int q=sc.nextInt();
+        sc.nextLine();
+        for(int i=0;i<q;i++){
+            String s=sc.next();
+            if(s.equals("Insert"))
+                l.add(sc.nextInt(),sc.nextInt());
+            else
+                l.remove(sc.nextInt());  
+        }
+        
+        for(int i:l)
+            System.out.print(i+" ");
+    }
+}
+```
+
+## Map
+```
+import java.util.*;
+import java.io.*;
+
+class Solution{
+	public static void main(String []argh)
+	{
+		Scanner in = new Scanner(System.in);
+        Map<String, String> m=new HashMap<>();
+		int n=in.nextInt();
+		in.nextLine();
+		for(int i=0;i<n;i++)
+		{
+			String name=in.nextLine();
+			String phone=in.nextLine();
+            m.put(name, phone);
+		}
+		while(in.hasNext())
+		{
+			String s=in.nextLine();
+            if(m.containsKey(s))
+                System.out.println(s+"="+m.get(s));
+            else 
+                System.out.println("Not found");
+		}
+	}
+}
+```
+
