@@ -667,3 +667,192 @@ public class Solution {
     }
 }
 ```
+
+## Comparator
+```
+import java.util.*;
+
+class Checker implements Comparator<Player>{
+    public int compare(Player a, Player b){
+        if(a.score<b.score)
+            return 1;
+        else if(a.score==b.score)
+            return a.name.compareTo(b.name);
+        return -1; 
+    }
+}
+
+class Player{
+    String name;
+    int score;
+    
+    Player(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+}
+
+class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+
+        Player[] player = new Player[n];
+        Checker checker = new Checker();
+        
+        for(int i = 0; i < n; i++){
+            player[i] = new Player(scan.next(), scan.nextInt());
+        }
+        scan.close();
+     
+        Arrays.sort(player, checker);
+        for(int i = 0; i < player.length; i++){
+            System.out.printf("%s %s\n", player[i].name, player[i].score);
+        }
+    }
+}
+```
+
+## Sort
+```
+import java.util.*;
+
+class Student{
+	private int id;
+	private String fname;
+	private double cgpa;
+	public Student(int id, String fname, double cgpa) {
+		super();
+		this.id = id;
+		this.fname = fname;
+		this.cgpa = cgpa;
+	}
+	public int getId() {
+		return id;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public double getCgpa() {
+		return cgpa;
+	}
+}
+
+public class Solution
+{
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		
+		List<Student> studentList = new ArrayList<Student>();
+		while(testCases>0){
+			int id = in.nextInt();
+			String fname = in.next();
+			double cgpa = in.nextDouble();
+			
+			Student st = new Student(id, fname, cgpa);
+			studentList.add(st);
+			
+			testCases--;
+		}
+      
+        Comparator<Student> c=(Student o1,Student o2)->{
+            return o1.getCgpa()==o2.getCgpa()?o1.getFname().compareTo(o2.getFname()):o1.getCgpa()<o2.getCgpa()?1:-1;
+        };
+        
+        Collections.sort(studentList,c);
+        
+      	for(Student st: studentList){
+			System.out.println(st.getFname());
+		}
+	}
+}
+```
+
+## Dequeue
+```
+import java.util.*;
+public class test {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Deque deque = new ArrayDeque<>();
+        Set<Integer> s=new HashSet<>();
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int r=0;
+        
+        for (int i = 0; i < n; i++) {
+            int num=in.nextInt();
+            deque.add(num);
+            s.add(num);
+            
+            if(i>=m-1){
+                r=Math.max(r, s.size());
+                int a=(int)deque.poll();
+                if(!deque.contains(a))
+                    s.remove(a);
+            }
+        }   
+        System.out.print(r);
+    }
+}
+```
+
+## BitSet
+```
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        BitSet b1=new BitSet(n);
+        BitSet b2=new BitSet(n);
+        
+        while(m-->0){
+            String q=sc.next();
+            int q1=sc.nextInt();
+            int q2=sc.nextInt();
+            if(q.equals("AND")){
+                if(q1==1)
+                    b1.and(b2);
+                else
+                    b2.and(b1);
+            }
+            else if(q.equals("SET")){
+                if(q1==1)
+                    b1.set(q2);
+                else
+                    b2.set(q2);
+            }
+            else if(q.equals("FLIP")){
+                if(q1==1)
+                    b1.flip(q2);
+                else
+                    b2.flip(q2);
+            }
+            else if(q.equals("OR")){
+                if(q1==1)
+                    b1.or(b2);
+                else
+                    b2.or(b1);
+            }
+            else{
+                if(q1==1)
+                    b1.xor(b2);
+                else
+                    b2.xor(b1);
+            }
+            System.out.println(b1.cardinality()+" "+b2.cardinality());
+        }
+    }
+}
+```
