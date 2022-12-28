@@ -1,5 +1,3 @@
-package Basic_programs;
-
 import java.util.Scanner;
 
 public class Factorial {
@@ -23,5 +21,4 @@ public class Factorial {
 		sc.close();
 		System.out.println(fact(n));
 	}
-
 }
